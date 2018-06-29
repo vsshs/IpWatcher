@@ -12,7 +12,10 @@ namespace IpWatcher
         {
             // Load data
             string fileName = "ips.txt";
+
             var slackUrl = args[0];
+            var skipCompare = args.Length > 1 ? args[1] : null;
+
             if (slackUrl is null)
             {
                 throw new ArgumentNullException("Webhook url must be provided!");
@@ -24,24 +27,24 @@ namespace IpWatcher
             string knownIps = "";
             if (File.Exists(fileName))
             {
-                 knownIps = File.ReadAllLines("ips.txt") [0];
+                knownIps = File.ReadAllLines("ips.txt")[0];
             }
 
 
             var host = Dns.GetHostEntry(Dns.GetHostName());
-            var currentIps = $"{DateTime.UtcNow.ToString("s").Replace('T', ' ')}: ";
+            var currentIps = $" {Dns.GetHostName()} - {DateTime.UtcNow.ToString("s").Replace('T', ' ')}: ";
 
             foreach (var ip in host.AddressList)
             {
                 if (ip.AddressFamily == AddressFamily.InterNetwork)
-                { 
+                {
                     currentIps += $"{ip.ToString()}, ";
                 }
             }
 
-            if (knownIps.Length == 0 || knownIps.Split(':').Last() != currentIps.Split(':').Last())
+            if (skipCompare != null || knownIps.Length == 0 || knownIps.Split(':').Last() != currentIps.Split(':').Last())
             {
-                Console.WriteLine($"New ips found: {currentIps}" );
+                Console.WriteLine($"New ips found: {currentIps} for {Dns.GetHostName()}");
                 File.WriteAllText(fileName, currentIps);
 
                 try
