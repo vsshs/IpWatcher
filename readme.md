@@ -15,7 +15,7 @@ This is an app that notifies you on a slack channel when your computer's IP chan
 - Create a scheduled task to run every few minutes
     - Run Task Scheduler
     - Right-Click and select "Create Basic Task"
-    - Follow the steps
+    - Follow the steps (see images below)
 - Enjoy knowing your machine's IP addresses
 
 
@@ -23,3 +23,19 @@ License
 ----
 
 None, aka use at your own risk
+
+Scheduled task steps in images
+----
+![alt text](https://buggypixel.vsshsstatic.com/media/IpWatcherImages/1.png)
+
+![alt text](https://buggypixel.vsshsstatic.com/media/IpWatcherImages/2.png)
+
+![alt text](https://buggypixel.vsshsstatic.com/media/IpWatcherImages/3.png)
+
+![alt text](https://buggypixel.vsshsstatic.com/media/IpWatcherImages/4.png)
+
+![alt text](https://buggypixel.vsshsstatic.com/media/IpWatcherImages/5.png)
+
+![alt text](https://buggypixel.vsshsstatic.com/media/IpWatcherImages/6.png)
+
+![alt text](https://buggypixel.vsshsstatic.com/media/IpWatcherImages/7.png)
